@@ -1,6 +1,5 @@
-
 {% set name = "gammaray" %}
-{% set version = "2.11.2" %}
+{% set version = "2.11.3" %}
 
 package:
   name: {{ name|lower }}
@@ -8,20 +7,20 @@ package:
 
 source:
   - url: https://github.com/KDAB/GammaRay/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-    sha256: bba4f21a2bc81ec8ab50dce5218c7a375b92d64253c690490a6fcb384c2ff9f3
+    sha256: 03d7ca7bd5eb600c9c389d0cf071960330592f1f392a783b7fec5f9eaa5df586
 
 build:
-  skip: True  # [win]
+  skip: true  # [win]
   number: 0
   rpaths:
     - lib  # [osx]
     - GammaRay.app/Contents/Frameworks  # [osx]
-  missing_dso_whitelist:  # [osx]
+  missing_dso_whitelist:   # [osx]
     - /usr/lib/libbsm.0.dylib  # [osx]
     - /usr/lib/libcups.2.dylib  # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
     - /usr/lib/libsandbox.1.dylib  # [osx]
-    - '/System/Library/Frameworks/CoreLocation.framework/**'  # [osx]
+    - /System/Library/Frameworks/CoreLocation.framework/**    # [osx]
 
 requirements:
   build:
@@ -43,7 +42,7 @@ requirements:
     - qt
   run:
     - qt
-  run_constrained:                                            # [osx]
+  run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.12") }}  # [osx]
 
 test:
@@ -55,7 +54,7 @@ about:
   license: GPL-3.0-or-later AND MIT
   license_family: GPL
   license_file: LICENSE.GPL.txt
-  summary: 'GammaRay is a tool to poke around in a Qt-application and also to manipulate the application to some extent.'
+  summary: GammaRay is a tool to poke around in a Qt-application and also to manipulate the application to some extent.
   description: |
     GammaRay is a software introspection tool for Qt applications developed by KDAB.
     Leveraging the QObject introspection mechanism it allows you to observe and
