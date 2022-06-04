@@ -12,7 +12,7 @@ source:
 
 build:
   skip: True  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib  # [osx]
     - GammaRay.app/Contents/Frameworks  # [osx]
@@ -40,9 +40,9 @@ requirements:
     - {{ cdt('libxxf86vm-devel') }}      # [linux]
   host:
     - cmake
-    - qt
+    - qt-main
   run:
-    - qt
+    - qt-main
   run_constrained:                                            # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.12") }}  # [osx]
 
