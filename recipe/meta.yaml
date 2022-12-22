@@ -40,6 +40,7 @@ requirements:
     - {{ cdt('libxxf86vm-devel') }}      # [linux]
   host:
     - cmake
+    - make  # [linux]
     - qt-main
   run:
     - qt-main
