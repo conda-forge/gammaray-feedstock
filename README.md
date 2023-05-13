@@ -1,11 +1,11 @@
-About gammaray
-==============
+About gammaray-feedstock
+========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gammaray-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/KDAB/GammaRay
 
 Package license: GPL-3.0-or-later AND MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gammaray-feedstock/blob/main/LICENSE.txt)
 
 Summary: GammaRay is a tool to poke around in a Qt-application and also to manipulate the application to some extent.
 
