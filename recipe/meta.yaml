@@ -1,6 +1,5 @@
-
 {% set name = "gammaray" %}
-{% set version = "2.11.2" %}
+{% set version = "3.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,15 +7,15 @@ package:
 
 source:
   - url: https://github.com/KDAB/GammaRay/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-    sha256: bba4f21a2bc81ec8ab50dce5218c7a375b92d64253c690490a6fcb384c2ff9f3
+    sha256: acd27dbbcbdf73fed497e0b5d6c477f2e11b59c48499752602677037dcd64ba5
 
 build:
-  skip: True  # [win]
+  skip: true  # [win]
   number: 0
   rpaths:
     - lib  # [osx]
     - GammaRay.app/Contents/Frameworks  # [osx]
-  missing_dso_whitelist:  # [osx]
+  missing_dso_whitelist:   # [osx]
     - /usr/lib/libbsm.0.dylib  # [osx]
     - /usr/lib/libcups.2.dylib  # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
@@ -43,7 +42,7 @@ requirements:
     - qt
   run:
     - qt
-  run_constrained:                                            # [osx]
+  run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.12") }}  # [osx]
 
 test:
