@@ -12,7 +12,7 @@ source:
 
 build:
   skip: True  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib  # [osx]
     - GammaRay.app/Contents/Frameworks  # [osx]
@@ -27,6 +27,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - make
     - {{ cdt('mesa-libgl-devel') }}      # [linux]
     - {{ cdt('mesa-libegl-devel') }}     # [linux]
     - {{ cdt('mesa-dri-drivers') }}      # [linux]
@@ -40,11 +41,11 @@ requirements:
     - {{ cdt('libxxf86vm-devel') }}      # [linux]
   host:
     - cmake
-    - qt
+    - qt-main
   run:
-    - qt
-  run_constrained:                                            # [osx]
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.12") }}  # [osx]
+    - qt-main
+  run_constrained:                                             # [osx and x86_64]
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.12") }}  # [osx and x86_64]
 
 test:
   commands:
