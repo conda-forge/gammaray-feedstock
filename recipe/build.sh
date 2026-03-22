@@ -1,10 +1,7 @@
+#!/usr/bin/env bash
 
-mkdir build
-pushd build
+set -o xtrace -o nounset -o pipefail -o errexit
 
-cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_INSTALL_LIBDIR=lib
-make
-make install
-
-popd
-rm -rf build
+cmake -S ${SRC_DIR} -B build -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ${CMAKE_ARGS}
+cmake --build build -j ${CPU_COUNT}
+cmake --install build
