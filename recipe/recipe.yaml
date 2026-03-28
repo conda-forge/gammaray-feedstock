@@ -20,8 +20,9 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
-  host:
     - cmake
+    - ninja
+  host:
     - qt6-main
     - if: linux
       then:
