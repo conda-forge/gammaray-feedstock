@@ -23,7 +23,7 @@ requirements:
     - cmake
     - ninja
   host:
-    - qt6-main
+    - qt5-main
     - if: linux
       then:
         - libgl-devel
@@ -39,7 +39,7 @@ tests:
 
 about:
   license: GPL-3.0-or-later AND MIT
-  license_file: LICENSE.GPL.txt
+  license_file: LICENSE.txt
   summary: GammaRay is a tool to poke around in a Qt-application and also to manipulate the application to some extent.
   description: |
     GammaRay is a software introspection tool for Qt applications developed by KDAB.
