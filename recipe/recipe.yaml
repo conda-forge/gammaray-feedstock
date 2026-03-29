@@ -23,7 +23,7 @@ requirements:
     - cmake
     - ninja
   host:
-    - qt5-main
+    - qt-main
     - if: linux
       then:
         - libgl-devel
