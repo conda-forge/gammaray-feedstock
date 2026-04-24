@@ -1,6 +1,5 @@
-
 {% set name = "gammaray" %}
-{% set version = "2.11.2" %}
+{% set version = "3.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,15 +7,15 @@ package:
 
 source:
   - url: https://github.com/KDAB/GammaRay/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-    sha256: bba4f21a2bc81ec8ab50dce5218c7a375b92d64253c690490a6fcb384c2ff9f3
+    sha256: 93b52d5318374896621e1d8b5dd03379c53e0458b1633b539d18737fe8c300cf
 
 build:
-  skip: True  # [win]
+  skip: true  # [win]
   number: 0
   rpaths:
     - lib  # [osx]
     - GammaRay.app/Contents/Frameworks  # [osx]
-  missing_dso_whitelist:  # [osx]
+  missing_dso_whitelist:   # [osx]
     - /usr/lib/libbsm.0.dylib  # [osx]
     - /usr/lib/libcups.2.dylib  # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
@@ -26,6 +25,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - {{ cdt('mesa-libgl-devel') }}      # [linux]
     - {{ cdt('mesa-libegl-devel') }}     # [linux]
@@ -43,8 +43,7 @@ requirements:
     - qt
   run:
     - qt
-  run_constrained:                                            # [osx]
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.12") }}  # [osx]
+  run_constrained:   # [osx]
 
 test:
   commands:
