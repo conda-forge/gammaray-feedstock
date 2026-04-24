@@ -1,0 +1,56 @@
+schema_version: 1
+
+context:
+  version: "3.4.0"
+
+package:
+  name: gammaray
+  version: ${{ version }}
+
+source:
+  - url: https://github.com/KDAB/GammaRay/releases/download/v${{ version }}/gammaray-${{ version }}.tar.gz
+    sha256: bcac8aa24671bcfd563213f5cfd9e61cf555b22ee3896e8111a5c3a588aacadf
+
+build:
+  number: 0
+  skip: win
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib('c') }}
+    - cmake
+    - ninja
+  host:
+    - qt-main
+    - if: linux
+      then:
+        - libgl-devel
+        - libegl-devel
+        - xorg-libxext
+        - xorg-libxdamage
+        - xorg-libxfixes
+        - xorg-libxxf86vm
+
+tests:
+  - script:
+      - test -f $PREFIX/lib/libgammaray_client${SHLIB_EXT}
+
+about:
+  license: GPL-3.0-or-later AND MIT
+  license_file: LICENSE.txt
+  summary: GammaRay is a tool to poke around in a Qt-application and also to manipulate the application to some extent.
+  description: |
+    GammaRay is a software introspection tool for Qt applications developed by KDAB.
+    Leveraging the QObject introspection mechanism it allows you to observe and
+    manipulate your application at runtime. This works both locally on your
+    workstation and remotely on an embedded target.
+  homepage: https://github.com/KDAB/GammaRay
+  repository: https://github.com/KDAB/GammaRay
+
+extra:
+  recipe-maintainers:
+    - andfoy
+    - ccordoba12
+    - steff456
